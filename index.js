@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const UserRouter = require("./routes/user");
 const RegisterRouter = require("./routes/auth");
+
 dotenv.config();
 mongoose
   .connect(process.env.MONGO_URL)

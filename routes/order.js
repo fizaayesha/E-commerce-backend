@@ -15,6 +15,7 @@ router.post("/", verifyToken, async (req, res) => {
     res.status(200).send(savedOrder);
   } catch (err) {
     res.status(500);
+    console.log(err);
   }
 });
 
@@ -72,7 +73,7 @@ router.get("/income", verifyTokenAndAdmin, async (req, res) => {
   try {
     const income = await Order.aggregate([
       {
-        $match: { createdAt: { $get: previousMonth } },
+        $match: { createdAt: { $gte: previousMonth } },
       },
       {
         $project: {
